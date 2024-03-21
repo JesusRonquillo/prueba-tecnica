@@ -1,11 +1,11 @@
-import styled from "styled-components"
+import styled from "styled-components";
 export const HeaderNavigation = styled.header`
   padding: 2px 120px 2px 120px;
 
   @media (max-width: 760px) {
     padding: 0px 24px 0px 24px;
   }
-`
+`;
 export const Navigation = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -15,7 +15,7 @@ export const Navigation = styled.nav`
       margin: 0px;
     }
   }
-`
+`;
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -26,7 +26,7 @@ export const Wrapper = styled.div`
       display: none;
     }
   }
-`
+`;
 export const WrapperComunication = styled.div`
   display: flex;
   align-items: center;
@@ -38,15 +38,14 @@ export const WrapperComunication = styled.div`
     letter-spacing: 0.4px;
     text-align: right;
   }
-`
+`;
 
 export const Container = styled.div`
   padding: 32px 120px;
-
   @media (max-width: 768px) {
     padding: 0px 24px 64px 24px;
   }
-`
+`;
 export const SubContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -54,4 +53,4 @@ export const SubContainer = styled.div`
     flex-direction: column;
     gap: 24px;
   }
-`
+`;

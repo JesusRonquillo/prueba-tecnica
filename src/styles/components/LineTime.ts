@@ -27,16 +27,22 @@ export const Text = styled.div`
   font-size: 16px;
 `;
 export const Dashes = styled.div`
-  margin-left: 10px; /* Espacio entre el texto y las líneas */
+  margin-left: 15px; /* Espacio entre el texto y las líneas */
   font-size: 16px;
   display: flex;
   align-items: center;
+  margin-right: 10px;
 `;
 
 export const DashLine = styled.div`
   width: 3px;
   height: 2px;
   background-color: #4f4fff;
-  margin-right: 5px;
+  margin-right: 8px;
 `;
 // Estilos para los puntos suspensivos
+
+export const FlexContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;

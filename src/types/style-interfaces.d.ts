@@ -12,4 +12,5 @@ interface CardProps {
 }
 interface TimelineProps {
   activeStep: 1 | 2;
+  text: string;
 }
