@@ -45,4 +45,5 @@ export const DashLine = styled.div`
 export const FlexContainer = styled.div`
   display: flex;
   justify-content: center;
+  height: 56px;
 `;

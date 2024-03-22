@@ -9,8 +9,14 @@ interface CardProps {
   icon?: React.ReactNode;
   title: string;
   paragraph: string;
+  onClick?: () => void;
+  isActive?: boolean;
 }
 interface TimelineProps {
   activeStep: 1 | 2;
   text: string;
+}
+interface SectionInfoProps {
+  name: string;
+  onCardClick?: () => void;
 }

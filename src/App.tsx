@@ -150,11 +150,6 @@ function App() {
               </WrapperCheckbox>
               <Link>Aplican Términos y Condiciones.</Link>
               <Button>Cotiza aquí</Button>
-              {/* <Card
-                icon={<img src={iconOther} alt="Icono" />}
-                title="Para alguien más"
-                paragraph="Realiza una cotización para uno de tus familiares o cualquier persona."
-              ></Card> */}
             </ContainerInputs>
           </FormContainer>
         </SubContainer>
