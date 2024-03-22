@@ -1,12 +1,11 @@
 import styled from "styled-components";
 import { AiOutlineCheck } from "react-icons/ai";
 
-
 export const Container = styled.div`
   position: relative;
   border-radius: 24px;
   background-color: #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 1px 32px #aeacf3; /* Ajuste de la sombra */
   padding: 20px;
   width: 256px;
   height: 212px;
