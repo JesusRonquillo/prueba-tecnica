@@ -5,10 +5,12 @@ import { Header } from "../components/Header";
 import Timeline from "../components/LineTime";
 import useApi from "../hooks/useApi";
 import SectionInfo from "../sections/Inforation";
+import { TimelineMobile } from "../components/TimelineMobile";
 // import { SubContainer } from "../styles/components/Header";
 import { FlexContainer } from "../styles/components/LineTime";
 import BackButton from "../components/ButtonBack";
 import { Plans } from "../sections/Plans";
+import { Container } from "../styles/pages/Conteiner";
 
 const Oferts = () => {
   const apiUrl = import.meta.env.VITE_API_BASE_URL + "/api/user.json";
@@ -34,10 +36,13 @@ const Oferts = () => {
         <Timeline activeStep={1} text="Planes y coberturas" />
         <DashesComteiner />
         <Timeline activeStep={1} text="Resumen" />
+        <TimelineMobile></TimelineMobile>
       </FlexContainer>
-      <BackButton onClick={() => {}} />
-      <SectionInfo name={data?.name} onCardClick={handleCardClick} />{" "}
-      {showPlans && <Plans />}
+      <Container>
+        <BackButton onClick={() => {}} />
+        <SectionInfo name={data?.name} onCardClick={handleCardClick} />{" "}
+        {showPlans && <Plans />}
+      </Container>
     </>
   );
 };

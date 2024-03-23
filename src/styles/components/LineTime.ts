@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const TimelineContainer = styled.div`
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 // Estilos para los círculos de la línea de tiempo
@@ -14,12 +17,14 @@ export const Circle = styled.div<{ isActive: boolean }>`
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background-color: ${({ isActive }) => (isActive ? "#4f4fff" : "##7981B2")};
+  background-color: ${({ isActive }) =>
+    isActive ? "#4f4fff" : "rgb(255,255,255)"};
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 18px;
   font-weight: bold;
+  border: 2px solid rgba(169, 175, 217, 1);
   color: ${({ isActive }) => (isActive ? "#FFF" : "#4f4fff")};
 `;
 export const Text = styled.div`
@@ -32,6 +37,9 @@ export const Dashes = styled.div`
   display: flex;
   align-items: center;
   margin-right: 10px;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const DashLine = styled.div`
@@ -44,6 +52,11 @@ export const DashLine = styled.div`
 
 export const FlexContainer = styled.div`
   display: flex;
+  align-items: center;
   justify-content: center;
   height: 56px;
+  @media (max-width: 768px) {
+    padding: 0 24px;
+    justify-content: flex-start;
+  }
 `;

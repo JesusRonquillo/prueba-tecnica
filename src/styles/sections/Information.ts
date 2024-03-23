@@ -1,20 +1,23 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-  @media (max-width: 768px) {
-    padding: 0px 16px;
-  }
-`;
 export const CardContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 32px;
-  margin-top: 30px;
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: center;
   }
 `;
+export const TitleContainer = styled.div`
+  width: 545px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 export const Section = styled.section`
   width: 645px;
   height: 375px;
@@ -22,23 +25,43 @@ export const Section = styled.section`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 32px;
   align-items: center;
-  margin-top: 120px;
-  margin-bottom: 50px;
-`;
-export const TextContainer = styled.div`
-  width: 545px;
-  margin: auto;
+  margin-top: 56px;
+
   @media (max-width: 768px) {
     width: 100%;
+    height: 100%;
+    margin: 0;
   }
 `;
-export const ContainerCardPlans = styled.div`
-  display: flex;
-  margin-top: 20px;
-  align-items: center;
-  overflow-x: hidden;
+export const Title = styled.h1`
+  font-size: 40px;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+  line-height: 48px;
+  letter-spacing: -0.6px;
+
   @media (max-width: 768px) {
-    flex-direction: column;
+    font-size: 16px;
+    font-size: 28px;
+    font-weight: 700;
+    text-align: left;
+    color: rgba(20, 25, 56, 1);
+    letter-spacing: -0.2px;
+    line-height: 36px;
+  }
+`;
+export const Text = styled.p`
+  margin: 0;
+  color: rgba(20, 25, 56, 1);
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 16px;
+    line-height: 28px;
+    text-align: left;
+    letter-spacing: 0.1px;
+    font-weight: 400;
   }
 `;

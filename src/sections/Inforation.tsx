@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { Card } from "../components/Target";
-import { CardContainer, Section } from "../styles/sections/Information";
-import { CustomText } from "../styles/Text";
+import {
+  CardContainer,
+  Section,
+  TitleContainer,
+} from "../styles/sections/Information";
 import iconMe from "../assets/icon-for-me.svg";
 import iconOther from "../assets/icon-for-other.svg";
+import { Title, Text } from "../styles/sections/Information";
 
 const SectionInfo: React.FC<SectionInfoProps> = ({ name }) => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
@@ -13,12 +17,10 @@ const SectionInfo: React.FC<SectionInfoProps> = ({ name }) => {
   };
   return (
     <Section>
-      <div style={{ width: "545px" }}>
-        <CustomText big>{`${name} ¿Para quién deseas cotizar?`}</CustomText>
-      </div>
-      <CustomText small>
-        Selecciona la opción que se ajuste más a tus necesidades.
-      </CustomText>
+      <TitleContainer>
+        <Title>{`${name} ¿Para quién deseas cotizar?`}</Title>
+        <Text>Selecciona la opción que se ajuste más a tus necesidades.</Text>
+      </TitleContainer>
       <CardContainer>
         <Card
           onClick={() => handleCardClick("Para mí")}

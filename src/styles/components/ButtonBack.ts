@@ -11,6 +11,9 @@ export const Button = styled.button`
   background-color: transparent;
   color: #333;
   cursor: pointer;
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 export const Circle = styled.div`

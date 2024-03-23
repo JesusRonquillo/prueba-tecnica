@@ -11,9 +11,11 @@ export const Container = styled.div<{ border: string }>`
   width: 256px;
   height: 212px;
   border: ${(props) => props.border};
-  @media (max-width: 768px) {
-    width: auto;
-    height: 100%;
+  @media (max-width: 760px) {
+    width: fit-content;
+    height: fit-content;
+    padding: 16px 24px 40px 24px;
+    border: ${(props) => props.border};
   }
 `;
 
