@@ -14,6 +14,7 @@ import blurAssetGreen from "../assets/blur_asset_green.svg";
 import { ChangeEvent, useEffect, useState } from "react";
 import HeaderForm from "../components/Home/HeaderForm";
 import ContainerForm from "../components/Home/ContainerForm";
+import LazyLoad from "react-lazyload";
 export const Home = () => {
   const [documentNumber, setDocumentNumber] = useState("");
   const [isQuoteDisabled, setIsQuoteDisabled] = useState<boolean>(true);
@@ -93,7 +94,9 @@ export const Home = () => {
       <Container>
         <form onSubmit={handleSubmit}>
           <SubContainer style={{ display: "flex" }}>
-            <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
+            <LazyLoad height={200} offset={100} once>
+              <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
+            </LazyLoad>
             <HeaderForm />
             <Line></Line>
             <ContainerForm
