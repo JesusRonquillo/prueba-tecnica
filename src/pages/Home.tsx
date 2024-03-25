@@ -93,7 +93,7 @@ export const Home = () => {
       <Container>
         <form onSubmit={handleSubmit}>
           <SubContainer style={{ display: "flex" }}>
-            <HomeImage src={homeImage} alt="Home Image" />
+            <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
             <HeaderForm />
             <Line></Line>
             <ContainerForm
