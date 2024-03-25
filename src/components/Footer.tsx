@@ -1,6 +1,5 @@
-import React from "react"
-import logoWhite from "../assets/logo_white.svg"
-import { FooterContainer } from "../styles/components/Footer"
+import logoWhite from "../assets/logo_white.svg";
+import { FooterContainer } from "../styles/components/Footer";
 
 export const Footer = () => {
   return (
@@ -19,5 +18,5 @@ export const Footer = () => {
         © 2023 RIMAC Seguros y Reaseguros.
       </span>
     </FooterContainer>
-  )
-}
+  );
+};

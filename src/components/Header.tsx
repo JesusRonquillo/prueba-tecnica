@@ -1,12 +1,11 @@
-import React from "react"
 import {
   Navigation,
   HeaderNavigation,
   Wrapper,
   WrapperComunication,
-} from "../styles/components/Header"
-import logo from "../assets/logo.svg"
-import telephoneIcon from "../assets/telephone.svg"
+} from "../styles/components/Header";
+import logo from "../assets/logo.svg";
+import telephoneIcon from "../assets/telephone.svg";
 
 export const Header = () => {
   return (
@@ -22,5 +21,5 @@ export const Header = () => {
         </Wrapper>
       </Navigation>
     </HeaderNavigation>
-  )
-}
+  );
+};
