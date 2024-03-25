@@ -5,6 +5,7 @@ import {
   Container,
   Header,
 } from "../styles/components/Target";
+import { CardProps } from "../types/style-interfaces";
 
 export const Card: React.FC<CardProps> = ({
   backgroundImage,

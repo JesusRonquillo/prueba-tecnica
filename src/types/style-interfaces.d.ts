@@ -45,7 +45,46 @@ interface UserData {
 interface SummaryCardProps {
   name: string;
   lastName: string;
+  dni: string | number;
+  phone: string | number;
+  plan: string;
+  price: string | number;
 }
 interface BackButtonProps {
   onClick: () => void;
+}
+// Definir tipos para los datos almacenados en el estado global
+export interface UserData {
+  phone: string;
+  dni: string;
+}
+
+export interface SelectedPlan {
+  name: string;
+  price: number;
+  description: string[];
+  age: number;
+}
+
+// Definir tipo para el estado global
+export interface UserState {
+  name: string;
+  userData: UserData;
+  selectedPlan: SelectedPlan;
+}
+
+export interface RootState {
+  user: {
+    name: string;
+    userData: {
+      phone: string;
+      dni: string;
+    };
+    selectedPlan: {
+      name: string;
+      price: number;
+      description: string[];
+      age: number;
+    };
+  };
 }

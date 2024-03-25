@@ -6,6 +6,7 @@ import {
   //   TimelineDots,
   //   TimelineLine,
 } from "../styles/components/LineTime";
+import { TimelineProps } from "../types/style-interfaces";
 
 // Componente de línea de tiempo
 const Timeline: React.FC<TimelineProps> = ({ activeStep, text }) => {

@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import LoadingPage from "./Loading";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/userSlice";
+import { PlansData, UserData } from "../types/style-interfaces";
 
 const Oferts = () => {
   const apiUrlUser = import.meta.env.VITE_API_BASE_URL + "/api/user.json";

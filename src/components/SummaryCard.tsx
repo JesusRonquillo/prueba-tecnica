@@ -1,8 +1,16 @@
 import { Line, SummaryCardContainer } from "../styles/components/SummaryCard";
 import TextSummary from "../styles/components/TextSummay";
 import iconSumarry from "../assets/icon-summary.svg";
+import { SummaryCardProps } from "../types/style-interfaces";
 
-const SummaryCard: React.FC<SummaryCardProps> = ({ name, lastName }) => {
+const SummaryCard: React.FC<SummaryCardProps> = ({
+  name,
+  lastName,
+  dni,
+  phone,
+  plan,
+  price,
+}) => {
   return (
     <>
       <TextSummary
@@ -35,19 +43,19 @@ const SummaryCard: React.FC<SummaryCardProps> = ({ name, lastName }) => {
           Responsable de pago
         </TextSummary>
         <TextSummary size="14px" lineHeight="24px" weight={400} letter="0.1px">
-          DNI: 444888888
+          DNI: {dni}
         </TextSummary>
         <TextSummary size="14px" lineHeight="24px" weight={400} letter="0.1px">
-          Celular: 5130216147
+          Celular: {phone}
         </TextSummary>
         <TextSummary size="16px" lineHeight="24px" weight={700} letter="0.2px">
           Plan elegido
         </TextSummary>
         <TextSummary size="14px" lineHeight="24px" weight={400} letter="0.1px">
-          Plan en Casa y Clínica
+          {plan}
         </TextSummary>
         <TextSummary size="14px" lineHeight="24px" weight={400} letter="0.1px">
-          Costo del Plan: $99 al mes
+          Costo del Plan: ${price} al mes
         </TextSummary>
       </SummaryCardContainer>
     </>

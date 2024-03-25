@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { TextProps } from "../types/style-interfaces";
 
 export const CustomText = styled.span<TextProps>`
   font-size: ${({ big, small }) =>

@@ -14,13 +14,17 @@ import blurAssetGreen from "../assets/blur_asset_green.svg";
 import { ChangeEvent, useEffect, useState } from "react";
 import HeaderForm from "../components/Home/HeaderForm";
 import ContainerForm from "../components/Home/ContainerForm";
+import { useDispatch } from "react-redux";
+import { addUserData } from "../redux/userSlice";
 import { useSpring, animated } from "@react-spring/web";
+
 export const Home = () => {
   const [documentNumber, setDocumentNumber] = useState("");
   const [isQuoteDisabled, setIsQuoteDisabled] = useState<boolean>(true);
   const [numberPhone, setNumberPhone] = useState("");
   const [privacyPolicy, setPrivacyPolicy] = useState(0);
   const [tradePolicy, setTradePolicy] = useState(0);
+  const dispatch = useDispatch();
 
   const imageAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(-100px)" },
@@ -32,7 +36,6 @@ export const Home = () => {
     to: { opacity: 1, transform: "translateY(0)" },
     config: { duration: 1000 },
   });
-
   useEffect(() => {
     if (
       documentNumber.length >= 6 &&
@@ -56,6 +59,7 @@ export const Home = () => {
 
   const handleCotizarClick = () => {
     // Verificar que el número de documento esté lleno antes de avanzar
+    dispatch(addUserData({ phone: numberPhone, dni: documentNumber }));
     if (
       documentNumber.length >= 6 &&
       numberPhone.length >= 7 &&
@@ -108,7 +112,6 @@ export const Home = () => {
             <animated.div style={imageAnimation}>
               <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
             </animated.div>
-
             <animated.div style={formAnimation}>
               <HeaderForm />
               <Line></Line>

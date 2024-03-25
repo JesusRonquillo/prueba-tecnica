@@ -10,6 +10,7 @@ import iconOther from "../assets/icon-for-other.svg";
 import { Title, Text } from "../styles/sections/Information";
 import { Plans } from "./Plans";
 import { useSpring, animated } from "@react-spring/web";
+import { SectionInfoProps } from "../types/style-interfaces";
 
 const SectionInfo: React.FC<SectionInfoProps> = ({ name, dataPlans }) => {
   const [activeCard, setActiveCard] = useState<string | null>(null);
