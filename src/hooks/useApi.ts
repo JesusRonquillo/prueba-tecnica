@@ -17,7 +17,6 @@ const useApi = <T>(
     try {
       setLoading(true);
       const responseData: T | null = await get(endpoint);
-      console.log(responseData, "responsedata");
       if (responseData !== null) {
         setData(responseData);
       }

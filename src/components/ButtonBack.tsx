@@ -1,10 +1,6 @@
 import { FC } from "react";
 import { Button, Circle, Triangle } from "../styles/components/ButtonBack";
 
-interface BackButtonProps {
-  onClick: () => void;
-}
-
 const BackButton: FC<BackButtonProps> = ({ onClick }) => {
   return (
     <Button onClick={onClick}>

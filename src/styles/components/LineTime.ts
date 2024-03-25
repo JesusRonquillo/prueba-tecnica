@@ -27,9 +27,10 @@ export const Circle = styled.div<{ isActive: boolean }>`
   border: 2px solid rgba(169, 175, 217, 1);
   color: ${({ isActive }) => (isActive ? "#FFF" : "#4f4fff")};
 `;
-export const Text = styled.div`
+export const Text = styled.div<{ isActive: boolean }>`
   margin-left: 16px; /* Espacio entre el círculo y el texto */
   font-size: 16px;
+  color: ${({ isActive }) => (isActive ? "#141938" : "#7981B2")};
 `;
 export const Dashes = styled.div`
   margin-left: 15px; /* Espacio entre el texto y las líneas */

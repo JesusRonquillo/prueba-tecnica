@@ -19,4 +19,33 @@ interface TimelineProps {
 interface SectionInfoProps {
   name: string;
   onCardClick?: () => void;
+  dataPlans: Array<{
+    name: string;
+    price: number;
+    description: string[];
+    age: number;
+  }>;
+}
+interface Plan {
+  name: string;
+  price: number;
+  description: string[];
+  age: number;
+}
+
+interface PlansData {
+  list: Plan[];
+}
+interface UserData {
+  name: string;
+  lastName: string;
+  birthDay: string;
+}
+
+interface SummaryCardProps {
+  name: string;
+  lastName: string;
+}
+interface BackButtonProps {
+  onClick: () => void;
 }

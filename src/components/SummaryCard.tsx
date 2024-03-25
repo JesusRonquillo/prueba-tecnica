@@ -2,7 +2,7 @@ import { Line, SummaryCardContainer } from "../styles/components/SummaryCard";
 import TextSummary from "../styles/components/TextSummay";
 import iconSumarry from "../assets/icon-summary.svg";
 
-const SummaryCard = () => {
+const SummaryCard: React.FC<SummaryCardProps> = ({ name, lastName }) => {
   return (
     <>
       <TextSummary size="40px" lineHeight="48px" weight={700} letter="-0.6px">
@@ -20,7 +20,7 @@ const SummaryCard = () => {
             weight={700}
             letter="-0.2px"
           >
-            Rocio Miranda Díaz
+            {name + " " + lastName}
           </TextSummary>
         </div>
         <Line />

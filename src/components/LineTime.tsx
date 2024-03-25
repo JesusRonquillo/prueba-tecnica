@@ -12,8 +12,8 @@ const Timeline: React.FC<TimelineProps> = ({ activeStep, text }) => {
   return (
     <TimelineContainer>
       <TimelineCircle>
-        <Circle isActive={activeStep === 1}>1</Circle>
-        <Text>{text}</Text>
+        <Circle isActive={activeStep === 1}>{activeStep}</Circle>
+        <Text isActive={activeStep === 1}>{text}</Text>
       </TimelineCircle>
     </TimelineContainer>
   );
