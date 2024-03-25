@@ -14,12 +14,24 @@ import blurAssetGreen from "../assets/blur_asset_green.svg";
 import { ChangeEvent, useEffect, useState } from "react";
 import HeaderForm from "../components/Home/HeaderForm";
 import ContainerForm from "../components/Home/ContainerForm";
+import { useSpring, animated } from "@react-spring/web";
 export const Home = () => {
   const [documentNumber, setDocumentNumber] = useState("");
   const [isQuoteDisabled, setIsQuoteDisabled] = useState<boolean>(true);
   const [numberPhone, setNumberPhone] = useState("");
   const [privacyPolicy, setPrivacyPolicy] = useState(0);
   const [tradePolicy, setTradePolicy] = useState(0);
+
+  const imageAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(-100px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+    config: { duration: 1000 },
+  });
+  const formAnimation = useSpring({
+    from: { opacity: 0, transform: "translateY(+100px)" },
+    to: { opacity: 1, transform: "translateY(0)" },
+    config: { duration: 1000 },
+  });
 
   useEffect(() => {
     if (
@@ -93,21 +105,26 @@ export const Home = () => {
       <Container>
         <form onSubmit={handleSubmit}>
           <SubContainer style={{ display: "flex" }}>
-            <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
-            <HeaderForm />
-            <Line></Line>
-            <ContainerForm
-              documentNumber={documentNumber}
-              numberPhone={numberPhone}
-              privacyPolicy={privacyPolicy}
-              tradePolicy={tradePolicy}
-              isQuoteDisabled={isQuoteDisabled}
-              handleDocumentNumberChange={handleDocumentNumberChange}
-              handleNumberPhoneChange={handleNumberPhoneChange}
-              handlePrivacyPolicyChange={handlePrivacyPolicyChange}
-              handleTradePolicyChange={handleTradePolicyChange}
-              handleCotizarClick={handleCotizarClick}
-            />
+            <animated.div style={imageAnimation}>
+              <HomeImage src={homeImage} alt="Home Image" loading="lazy" />
+            </animated.div>
+
+            <animated.div style={formAnimation}>
+              <HeaderForm />
+              <Line></Line>
+              <ContainerForm
+                documentNumber={documentNumber}
+                numberPhone={numberPhone}
+                privacyPolicy={privacyPolicy}
+                tradePolicy={tradePolicy}
+                isQuoteDisabled={isQuoteDisabled}
+                handleDocumentNumberChange={handleDocumentNumberChange}
+                handleNumberPhoneChange={handleNumberPhoneChange}
+                handlePrivacyPolicyChange={handlePrivacyPolicyChange}
+                handleTradePolicyChange={handleTradePolicyChange}
+                handleCotizarClick={handleCotizarClick}
+              />
+            </animated.div>
           </SubContainer>
         </form>
       </Container>

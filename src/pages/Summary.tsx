@@ -6,6 +6,7 @@ import DashesComteiner from "../components/Dashes";
 import { Header } from "../components/Header";
 import Timeline from "../components/LineTime";
 import SummaryCard from "../components/SummaryCard";
+import { useSpring, animated } from "@react-spring/web";
 // import useApi from "../hooks/useApi";
 import { TimelineMobile } from "../components/TimelineMobile";
 import useApi from "../hooks/useApi";
@@ -13,6 +14,7 @@ import useApi from "../hooks/useApi";
 import { FlexContainer } from "../styles/components/LineTime";
 import { SummaryContainer } from "../styles/pages/Conteiner";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "./Loading";
 
 const Summary = () => {
   const apiUrl = import.meta.env.VITE_API_BASE_URL + "/api/user.json";
@@ -28,20 +30,33 @@ const Summary = () => {
   const handleBack = () => {
     navigate(-1);
   };
+  const containerAnimation = useSpring({
+    opacity: 1,
+    from: { opacity: 0 },
+    config: { duration: 1000 },
+  });
 
   return (
     <>
-      <Header />
-      <FlexContainer style={{ background: "#EDEFFC" }}>
-        <Timeline activeStep={2} text="Planes y coberturas" />
-        <DashesComteiner />
-        <Timeline activeStep={1} text="Resumen" />
-        <TimelineMobile></TimelineMobile>
-      </FlexContainer>
-      <SummaryContainer>
-        <BackButton onClick={handleBack} />
-        <SummaryCard name={data?.name} lastName={data?.lastName} />
-      </SummaryContainer>
+      {loading === true ? (
+        <LoadingPage />
+      ) : (
+        <>
+          <Header />
+          <FlexContainer style={{ background: "#EDEFFC" }}>
+            <Timeline activeStep={2} text="Planes y coberturas" />
+            <DashesComteiner />
+            <Timeline activeStep={1} text="Resumen" />
+            <TimelineMobile></TimelineMobile>
+          </FlexContainer>
+          <animated.div style={containerAnimation}>
+            <SummaryContainer>
+              <BackButton onClick={handleBack} />
+              <SummaryCard name={data?.name} lastName={data?.lastName} />
+            </SummaryContainer>
+          </animated.div>
+        </>
+      )}
     </>
   );
 };
