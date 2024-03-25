@@ -28,7 +28,9 @@ export const Plans: React.FC<{
   plan: number;
 }> = ({ data, plan }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
-
+  const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(
+    null
+  );
   const [dataForMe, setDataForMe] = useState<
     Array<{
       name: string;
@@ -74,6 +76,12 @@ export const Plans: React.FC<{
     );
   };
 
+  const handleSelectPlan = (index: number) => {
+    setSelectedPlanIndex(index);
+    console.log("Plan seleccionado:", index);
+  };
+
+  console.log(selectedPlanIndex);
   return (
     <div
       style={{
@@ -153,6 +161,7 @@ export const Plans: React.FC<{
                     </Layout>
                     <Link to="/oferts-user/summary-user">
                       <Button
+                        onClick={() => handleSelectPlan(index)}
                         $background="rgba(255, 28, 68, 1)"
                         $width="100%"
                         $fontSize="18px"

@@ -13,6 +13,7 @@ import useApi from "../hooks/useApi";
 import { FlexContainer } from "../styles/components/LineTime";
 import { Container } from "../styles/pages/Conteiner";
 import { useNavigate } from "react-router-dom";
+import LoadingPage from "./Loading";
 
 const Summary = () => {
   const apiUrl = import.meta.env.VITE_API_BASE_URL + "/api/user.json";
@@ -31,17 +32,23 @@ const Summary = () => {
 
   return (
     <>
-      <Header />
-      <FlexContainer style={{ background: "#EDEFFC" }}>
-        <Timeline activeStep={2} text="Planes y coberturas" />
-        <DashesComteiner />
-        <Timeline activeStep={1} text="Resumen" />
-        <TimelineMobile></TimelineMobile>
-      </FlexContainer>
-      <Container>
-        <BackButton onClick={handleBack} />
-        <SummaryCard name={data?.name} lastName={data?.lastName} />
-      </Container>
+      {loading === true ? (
+        <LoadingPage />
+      ) : (
+        <>
+          <Header />
+          <FlexContainer style={{ background: "#EDEFFC" }}>
+            <Timeline activeStep={2} text="Planes y coberturas" />
+            <DashesComteiner />
+            <Timeline activeStep={1} text="Resumen" />
+            <TimelineMobile></TimelineMobile>
+          </FlexContainer>
+          <Container>
+            <BackButton onClick={handleBack} />
+            <SummaryCard name={data?.name} lastName={data?.lastName} />
+          </Container>
+        </>
+      )}
     </>
   );
 };

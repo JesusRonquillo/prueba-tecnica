@@ -12,10 +12,15 @@ import BackButton from "../components/ButtonBack";
 // import { Plans } from "../sections/Plans";
 import { Container } from "../styles/pages/Conteiner";
 import { Link } from "react-router-dom";
+import LoadingPage from "./Loading";
+import { useDispatch } from "react-redux";
+import { addUser } from "../redux/userSlice";
 
 const Oferts = () => {
   const apiUrlUser = import.meta.env.VITE_API_BASE_URL + "/api/user.json";
   const apiUrlPlans = import.meta.env.VITE_API_BASE_URL + "/api/plans.json";
+  const dispatch = useDispatch();
+
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const {
     data: userData,
@@ -32,42 +37,45 @@ const Oferts = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } = useApi<PlansData>(apiUrlPlans);
 
-  // const [showPlans, setShowPlans] = useState(false);
-
-  console.log(userData);
-  console.log(userLoading);
-  console.log(userError);
-
-  console.log(plansData);
-  console.log(plansLoading);
-  console.log(plansError);
-
   useEffect(() => {
     fetchUserData();
     fetchPlansData();
+    console.log(userError);
+    console.log(plansError);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleBack = () => {};
+  useEffect(() => {
+    if (!userLoading && userData) {
+      // Despacha la acción addUser con los datos del usuario
+      dispatch(addUser(userData));
+    }
+  }, [userData, userLoading, dispatch]);
 
   return (
     <>
-      <Header />
-      <FlexContainer style={{ background: "#EDEFFC" }}>
-        <Timeline activeStep={1} text="Planes y coberturas" />
-        <DashesComteiner />
-        <Timeline activeStep={2} text="Resumen" />
-        <TimelineMobile></TimelineMobile>
-      </FlexContainer>
-      <Container>
-        <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-          <BackButton onClick={handleBack} />
-        </Link>
-        <SectionInfo
-          name={userData?.name || ""}
-          dataPlans={plansData?.list || []}
-        />
-      </Container>
+      {userLoading && plansLoading === true ? (
+        <LoadingPage />
+      ) : (
+        <>
+          <Header />
+          <FlexContainer style={{ background: "#EDEFFC" }}>
+            <Timeline activeStep={1} text="Planes y coberturas" />
+            <DashesComteiner />
+            <Timeline activeStep={2} text="Resumen" />
+            <TimelineMobile></TimelineMobile>
+          </FlexContainer>
+          <Container>
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              <BackButton onClick={() => window.history.back()} />
+            </Link>
+            <SectionInfo
+              name={userData?.name || ""}
+              dataPlans={plansData?.list || []}
+            />
+          </Container>
+        </>
+      )}
     </>
   );
 };
