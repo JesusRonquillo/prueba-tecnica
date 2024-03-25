@@ -256,6 +256,7 @@ export const Plans: React.FC<{
                     </Layout>
                     <Link to="/oferts-user/summary-user">
                       <Button
+                        onClick={() => handleSelectPlan(index)}
                         $background="rgba(255, 28, 68, 1)"
                         $width="100%"
                         $fontSize="18px"
