@@ -39,6 +39,11 @@ const Summary = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+  useEffect(() => {
+    if (userData.dni === "" || selectedPlan.price === 0) {
+      navigate("/");
+    }
+  }, [userData, selectedPlan, navigate]);
   const handleBack = () => {
     navigate(-1);
   };
