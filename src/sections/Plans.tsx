@@ -17,6 +17,8 @@ import {
 import houseIcon from "../assets/house.svg";
 import hospitalIcon from "../assets/hospitalIcon.svg";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addSelectedPlan } from "../redux/userSlice.ts";
 
 export const Plans: React.FC<{
   data: Array<{
@@ -27,6 +29,7 @@ export const Plans: React.FC<{
   }>;
   plan: number;
 }> = ({ data, plan }) => {
+  const dispatch = useDispatch();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedPlanIndex, setSelectedPlanIndex] = useState<number | null>(
     null
@@ -79,6 +82,7 @@ export const Plans: React.FC<{
   const handleSelectPlan = (index: number) => {
     setSelectedPlanIndex(index);
     console.log("Plan seleccionado:", index);
+    dispatch(addSelectedPlan(data[index]));
   };
 
   console.log(selectedPlanIndex);

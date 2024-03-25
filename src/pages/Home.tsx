@@ -2,37 +2,37 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import {
   HomeImage,
-  Title,
-  HeroMobile,
-  TitleContainer,
-  FormContainer,
-  ContainerInputs,
   Line,
-  Dropdown,
-  WrapperInput,
-  Text,
-  Input,
-  Label,
-  WrapperCheckbox,
-  LabelCheckbox,
-  Checkbox,
-  Badge,
-  Button,
   BlurImage,
   BlurImageGreen,
 } from "../styles/pages/App";
 import { Container, SubContainer } from "../styles/components/Header";
 import homeImage from "../assets/images/image.svg";
-import arrowDown from "../assets/arrow_down.svg";
 import blurAsset from "../assets/blur_asset.svg";
 
 import blurAssetGreen from "../assets/blur_asset_green.svg";
-import { Link } from "react-router-dom";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
+import HeaderForm from "../components/Home/HeaderForm";
+import ContainerForm from "../components/Home/ContainerForm";
 export const Home = () => {
   const [documentNumber, setDocumentNumber] = useState("");
   const [isQuoteDisabled, setIsQuoteDisabled] = useState<boolean>(true);
   const [numberPhone, setNumberPhone] = useState("");
+  const [privacyPolicy, setPrivacyPolicy] = useState(0);
+  const [tradePolicy, setTradePolicy] = useState(0);
+
+  useEffect(() => {
+    if (
+      documentNumber.length >= 6 &&
+      numberPhone.length >= 7 &&
+      privacyPolicy === 1 &&
+      tradePolicy === 1
+    ) {
+      setIsQuoteDisabled(false);
+    } else {
+      setIsQuoteDisabled(true);
+    }
+  }, [documentNumber, numberPhone, privacyPolicy, tradePolicy]);
 
   const handleDocumentNumberChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -40,24 +40,40 @@ export const Home = () => {
     if (value.length <= 8) {
       setDocumentNumber(value);
     }
-    handleCotizarClick();
   };
+
   const handleCotizarClick = () => {
     // Verificar que el número de documento esté lleno antes de avanzar
-    if (documentNumber.length >= 7) {
+    if (
+      documentNumber.length >= 6 &&
+      numberPhone.length >= 7 &&
+      privacyPolicy === 1 &&
+      tradePolicy === 1
+    ) {
       setIsQuoteDisabled(false);
     } else {
       setIsQuoteDisabled(true);
     }
   };
+
   const handleNumberPhoneChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     // Limitar la longitud del número de documento a 9 caracteres
     if (value.length <= 9) {
       setNumberPhone(value);
     }
-    handleCotizarClick();
   };
+
+  const handlePrivacyPolicyChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.target;
+    setPrivacyPolicy(checked ? 1 : 0);
+  };
+
+  const handleTradePolicyChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const { checked } = event.target;
+    setTradePolicy(checked ? 1 : 0);
+  };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     // Aquí puedes manejar la lógica de envío del formulario si es necesario
@@ -78,129 +94,20 @@ export const Home = () => {
         <form onSubmit={handleSubmit}>
           <SubContainer style={{ display: "flex" }}>
             <HomeImage src={homeImage} alt="Home Image" />
-            <HeroMobile>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "8px",
-                }}
-              >
-                <Badge>Seguro Salud Flexible</Badge>
-                <TitleContainer>
-                  <Title>Creado para ti y tu familia</Title>
-                </TitleContainer>
-              </div>
-              <img
-                style={{
-                  zIndex: 999,
-                }}
-                width={"132px"}
-                src={homeImage}
-                alt="Home Image"
-              />
-            </HeroMobile>
+            <HeaderForm />
             <Line></Line>
-            <FormContainer>
-              <TitleContainer>
-                <Badge>Seguro Salud Flexible</Badge>
-
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "8px",
-                  }}
-                >
-                  <Title>Creado para ti y tu familia</Title>
-                  <Text>
-                    Tú eliges cuánto pagar. Ingresa tus datos, cotiza y recibe
-                    nuestra asesoría. 100% online.
-                  </Text>
-                </div>
-              </TitleContainer>
-              <ContainerInputs>
-                <div
-                  style={{
-                    display: "flex",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(94, 100, 136, 1)",
-                  }}
-                >
-                  <Dropdown>
-                    <span>DNI</span>
-                    <img width={20} height={20} src={arrowDown} alt="" />
-                  </Dropdown>
-                  <WrapperInput>
-                    <Label htmlFor="id">Nro. de documento</Label>
-                    <Input
-                      id="id"
-                      name="id"
-                      placeholder="30216147"
-                      style={{}}
-                      type="number"
-                      value={documentNumber}
-                      onChange={handleDocumentNumberChange}
-                      required
-                    />
-                  </WrapperInput>
-                </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    borderRadius: "8px",
-                    border: "1px solid rgba(94, 100, 136, 1)",
-                    padding: "8px 16px 8px 16px",
-                  }}
-                >
-                  <Label htmlFor="phone">Celular</Label>
-                  <Input
-                    id="phone"
-                    name="phone"
-                    placeholder="5130216147"
-                    type="number"
-                    value={numberPhone}
-                    onChange={handleNumberPhoneChange}
-                    required
-                  />
-                </div>
-              </ContainerInputs>
-              <ContainerInputs>
-                <WrapperCheckbox>
-                  <Checkbox
-                    type="checkbox"
-                    name="exampleCheckbox"
-                    id="exampleCheckbox"
-                    required
-                  />
-                  <LabelCheckbox>
-                    Acepto lo Política de Privacidad
-                  </LabelCheckbox>
-                </WrapperCheckbox>
-                <WrapperCheckbox>
-                  <Checkbox
-                    type="checkbox"
-                    name="exampleCheckbox"
-                    id="exampleCheckbox"
-                    required
-                  />
-                  <LabelCheckbox>
-                    Acepto la Política Comunicaciones Comerciales
-                  </LabelCheckbox>
-                </WrapperCheckbox>
-                <Link to="/">Aplican Términos y Condiciones.</Link>
-                <Link to="/oferts-user">
-                  <Button
-                    onClick={handleCotizarClick}
-                    disabled={isQuoteDisabled}
-                    type="submit"
-                  >
-                    Cotiza aquí
-                  </Button>
-                </Link>
-              </ContainerInputs>
-            </FormContainer>
+            <ContainerForm
+              documentNumber={documentNumber}
+              numberPhone={numberPhone}
+              privacyPolicy={privacyPolicy}
+              tradePolicy={tradePolicy}
+              isQuoteDisabled={isQuoteDisabled}
+              handleDocumentNumberChange={handleDocumentNumberChange}
+              handleNumberPhoneChange={handleNumberPhoneChange}
+              handlePrivacyPolicyChange={handlePrivacyPolicyChange}
+              handleTradePolicyChange={handleTradePolicyChange}
+              handleCotizarClick={handleCotizarClick}
+            />
           </SubContainer>
         </form>
       </Container>

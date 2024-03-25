@@ -152,12 +152,14 @@ export const Line = styled.div`
     display: none;
   }
 `;
+
 export const Button = styled.button<{
   $background?: string;
   $width?: string;
   $fontSize?: string;
   $padding?: string;
   $height?: string;
+  $disabledColor?: string; // Nueva propiedad para el color de fondo deshabilitado
 }>`
   width: ${({ $width }) => $width || "195px;"};
   height: ${({ $height }) => $height || "auto"};
@@ -174,9 +176,14 @@ export const Button = styled.button<{
   text-align: center;
   cursor: pointer;
   transition: background-color 0.3s;
-  // &:hover {
-  //   background-color: rgba(3, 5, 15, 0.8);
-  // }
+
+  // Aplicar estilo para botón deshabilitado
+  &:disabled {
+    background-color: ${({ $disabledColor }) =>
+      $disabledColor || "rgba(200, 200, 200, 0.5)"};
+    cursor: not-allowed;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
   }
