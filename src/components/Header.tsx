@@ -13,7 +13,7 @@ export const Header = () => {
       <Navigation>
         <img src={logo} alt="logo" />
         <Wrapper>
-          <span>!Compra por este medio¡</span>
+          <span>¡Compra por este medio!</span>
           <WrapperComunication>
             <img src={telephoneIcon} alt="" />
             <span>(01) 411 6001</span>

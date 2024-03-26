@@ -9,9 +9,20 @@ import {
 export const TimelineMobile = () => {
   return (
     <TimeLineContainer>
-      <Circle isActive={false}>
-        <img src={arrowLeftIcon} alt="Arrow Left" />
-      </Circle>
+      <button
+        onClick={() => window.history.back()}
+        style={{
+          border: "none",
+          background: "none",
+          padding: 0,
+          margin: 0,
+          cursor: "pointer",
+        }}
+      >
+        <Circle isActive={false}>
+          <img src={arrowLeftIcon} alt="Arrow Left" />
+        </Circle>
+      </button>
       <StepText>PASO 1 DE 2</StepText>
       <TimeLine />
     </TimeLineContainer>

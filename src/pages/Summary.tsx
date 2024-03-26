@@ -30,12 +30,11 @@ const Summary = () => {
   const selectedPlan = useSelector((state: RootState) =>
     selectSelectedPlan(state)
   );
-  console.log("Datos del usuario:", userData);
-  console.log("Plan seleccionado:", selectedPlan);
 
-  console.log(loading);
-  console.log(error);
   useEffect(() => {
+    if (error) {
+      console.log(error);
+    }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -41,8 +41,10 @@ const Oferts = () => {
   useEffect(() => {
     fetchUserData();
     fetchPlansData();
-    console.log(userError);
-    console.log(plansError);
+    if (userError || plansError) {
+      console.log(userError);
+      console.log(plansError);
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

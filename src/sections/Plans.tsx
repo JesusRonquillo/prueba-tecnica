@@ -81,14 +81,12 @@ export const Plans: React.FC<{
 
   const handleSelectPlan = (index: number) => {
     setSelectedPlanIndex(index);
-    console.log("Plan seleccionado:", index);
+    console.log(selectedPlanIndex);
     plan === 1
       ? dispatch(addSelectedPlan(dataForMe[index]))
       : dispatch(addSelectedPlan(dataForYou[index]));
   };
 
-  console.log(selectedPlanIndex);
-  console.log(plan);
   return (
     <div
       style={{
